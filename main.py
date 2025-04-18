@@ -8,11 +8,15 @@ import tensorflow as tf
 import shutil
 import os
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Disable GPU
+
 app = FastAPI()
 
 # Load Models
 foot_model = load_model('./foot_model.h5')
-disease_model = YOLO('./dis_model.pt')
+device = 'cpu'  # Set to 'cuda' if you want to use GPU
+disease_model = YOLO('dis_model.pt').to(device)
+# disease_model = YOLO('./dis_model.pt')
 
 def convert_image(img_path, img_height=224, img_width=224):
     img = image.load_img(img_path, target_size=(img_height, img_width))
