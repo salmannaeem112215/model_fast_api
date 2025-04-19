@@ -59,3 +59,6 @@ async def predict(file: UploadFile = File(...)):
         os.remove(file_location)
 
     return {"result": result}
+@app.get("/ping")
+async def ping():
+    return {"message": "Pong! Server is up and running."}
