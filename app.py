@@ -8,6 +8,7 @@ import tensorflow as tf
 import shutil
 import os
 
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 app = FastAPI()
 
 # Load Models
