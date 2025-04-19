@@ -1,3 +1,6 @@
+import os
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
 from tensorflow.keras.models import load_model
@@ -6,9 +9,7 @@ from ultralytics import YOLO
 import numpy as np
 import tensorflow as tf
 import shutil
-import os
 
-os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 app = FastAPI()
 
 # Load Models
